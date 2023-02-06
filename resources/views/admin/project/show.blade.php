@@ -10,6 +10,7 @@
                 <div class="card-body">
                     
                     <h1>{{$project->name}}</h1>
+                    <h3>Tipologia: {{$project->type->tipologia}}</h3>
                     <p>{{$project->description}}</p>
                     
                     <img src="{{asset('/storage/' . $project->cover_img)}}" class="w-100 d-block">
