@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
@@ -79,8 +80,9 @@ class ProjectController extends Controller
         if(!$project){
             abort(404, "Ritenta");
         }
+        $categories =  Type::all();
 
-        return view("admin.project.edit", compact("project"));
+        return view("admin.project.edit", compact("project", "categories"));
     }
 
     /**
@@ -94,6 +96,7 @@ class ProjectController extends Controller
     {
         $project = Project::findOrFail($id);
         $data = $request->all();
+        
 
         
         if (key_exists("cover_img", $data)) {

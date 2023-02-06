@@ -18,6 +18,15 @@
                         </div>
 
                         <div class="mb-3">
+                            <label class="form-label">Type</label>
+                            <select name="type_id" class="form-control">
+                                @foreach ($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->tipologia}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
                             <label class="form-label">Description</label>
                             <input type="text-area" class="form-control" name="description" value="{{$project->description}}">
                         </div>
