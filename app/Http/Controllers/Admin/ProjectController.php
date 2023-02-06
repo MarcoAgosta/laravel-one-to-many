@@ -29,8 +29,9 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view("admin.project.create");
+    {   
+        $categories =  Type::all();
+        return view("admin.project.create", compact("categories"));
     }
 
     /**

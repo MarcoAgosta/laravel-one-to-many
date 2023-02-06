@@ -18,10 +18,9 @@
                         <div class="mb-3">
                             <label class="form-label">Type</label>
                             <select name="type_id" class="form-control">
-                                
-                                <option value="1">Lavoro</option>
-                                <option value="2">Studio</option>
-                                <option value="3">Personale</option>
+                                @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->tipologia}}</option>
+                                @endforeach
                                 
                             </select>
                         </div>
