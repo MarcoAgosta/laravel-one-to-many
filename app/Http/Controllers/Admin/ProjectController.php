@@ -50,6 +50,7 @@ class ProjectController extends Controller
         $project->description=$data["description"];
         $project->cover_img=$path;
         $project->github_link=$data["github_link"];
+        $project->type_id=$data["type_id"];
         $project->save();
 
         return redirect()->route("admin.projects.show", $project->id);

@@ -16,6 +16,17 @@
                         </div>
 
                         <div class="mb-3">
+                            <label class="form-label">Type</label>
+                            <select name="type_id" class="form-control">
+                                
+                                <option value="1">Lavoro</option>
+                                <option value="2">Studio</option>
+                                <option value="3">Personale</option>
+                                
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
                             <label class="form-label">Description</label>
                             <input type="text-area" class="form-control" name="description">
                         </div>
