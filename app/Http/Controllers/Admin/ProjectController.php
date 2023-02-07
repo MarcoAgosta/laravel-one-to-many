@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
@@ -40,11 +42,16 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(StoreProjectRequest $request)
+    {   
+        $data=$request->validated();
         $data=$request->all();
-
-        $path=Storage::disk('public')->put("projects", $data["cover_img"]);
+        
+        if(key_exists("cover_img",$data)){
+            $path=Storage::disk('public')->put("projects", $data["cover_img"]);
+        }else{
+            $path="";
+        };
     
         $project=new Project();
         $project->name=$data["name"];
@@ -94,9 +101,10 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProjectRequest $request, $id)
     {
         $project = Project::findOrFail($id);
+        $data=$request->validated();
         $data = $request->all();
         
 
